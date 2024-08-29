@@ -6,7 +6,7 @@
         <field name="model">car.management</field>
         <field name="arch" type="xml">
             <tree string="Car Management">
-                <field name="model" />
+                <field name="modelcar_model_ac" />
                 <field name="color" />
                 <field name="manufacturer" />
                 <field name="license" />
@@ -20,7 +20,7 @@
         </field>
     </record>
 
-    <record id="view_car_owner_tree">
+    <!-- <record id="view_car_owner_tree">
         <field name="name">car.owner.tree</field>
         <field name="model">car.owner</field>
         <field name="arch" type="xml">
@@ -28,7 +28,7 @@
             <field name="name" />
             <field name="email" />
         </tree>
-    </record>
+    </record> -->
 
     <record id="view_car_management_form" model="ir.ui.view">
         <field name="name">car.management.form</field>
