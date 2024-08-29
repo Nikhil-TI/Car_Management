@@ -1,0 +1,5 @@
+"id","model","owner_id","borrower_id","color","manufacturer","license","YOM","service","mileage","status"
+"001","ferrari-SF90","owner_001","borrower_001","yellow","ferrari","Ax-20-WEE",2017,"2036-01-01",8,"rented"
+"002","ferrari-SF90","owner_002",,"red","ferrari","Ax-30-ALWE",2017,"2036-12-12",8,"available"
+"003","Alto","owner_003",,"white","Maruti","HR-23 YT-2034",2012,"2027-11-03",10,"rented"
+"004","Honda City","owner_004","borrower_002","black","honda","PB-12 HX132",2010,"2025-04-07",7,"available"

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_car_management_tree" model="ir.ui.view">
+        <field name="name">car.management.tree</field>
+        <field name="model">car.management</field>
+        <field name="arch" type="xml">
+            <tree string="Car Management">
+                <field name="model" />
+                <field name="color" />
+                <field name="manufacturer" />
+                <field name="license" />
+                <field name="YOM" />
+                <field name="service" />
+                <field name="mileage" />
+                <field name="status" />
+                <field name="owner_id" />
+                <field name="borrower_id" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_car_owner_tree">
+        <field name="name">car.owner.tree</field>
+        <field name="model">car.owner</field>
+        <field name="arch" type="xml">
+        <tree string="Car Owners">
+            <field name="name" />
+            <field name="email" />
+        </tree>
+    </record>
+
+    <record id="view_car_management_form" model="ir.ui.view">
+        <field name="name">car.management.form</field>
+        <field name="model">car.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="model" />
+                        <field name="color" />
+                        <field name="manufacturer" />
+                        <field name="license" />
+                        <field name="YOM" />
+                        <field name="service" />
+                        <field name="mileage" />
+                        <field name="status" />
+                        <field name="owner_id" />
+                        <field name="borrower_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="car_model_action" model="ir.actions.act_window">
+        <field name="name">car.management.form.actions</field>
+        <field name="res_model">car.management</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_car_management_tree" />
+    </record>   
+
+    <menuitem id="car_management_menu_root" name="Car Management" />
+
+    <menuitem id="car_management_menu" name="Cars" parent="car_management_menu_root" action="car_model_action" />
+</odoo>
