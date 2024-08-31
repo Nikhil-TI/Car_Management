@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record id="view_car_management_tree" model="ir.ui.view">
+    <!-- car model tree view -->
+    <record id="view_car_model_tree" model="ir.ui.view">
         <field name="name">car.management.tree</field>
         <field name="model">car.management</field>
         <field name="arch" type="xml">
             <tree string="Car Management">
-                <field name="modelcar_model_ac" />
+                <field name="model" />
+                <field name="image" widget="image" />
                 <field name="color" />
                 <field name="manufacturer" />
                 <field name="license" />
                 <field name="YOM" />
                 <field name="service" />
                 <field name="mileage" />
-                <field name="status" />
+                <field name="status"/>
                 <field name="owner_id" />
                 <field name="borrower_id" />
             </tree>
         </field>
     </record>
 
-    <!-- <record id="view_car_owner_tree">
-        <field name="name">car.owner.tree</field>
-        <field name="model">car.owner</field>
-        <field name="arch" type="xml">
-        <tree string="Car Owners">
-            <field name="name" />
-            <field name="email" />
-        </tree>
-    </record> -->
 
-    <record id="view_car_management_form" model="ir.ui.view">
-        <field name="name">car.management.form</field>
+    <!-- car model kanban view -->
+    <record id="view_car_model_kanban_view" model="ir.ui.view">
+        <field name="name">car.model.kanban.vie</field>
         <field name="model">car.management</field>
         <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
+            <kanban>
+                <template>
+                    <t t-name="kanban-box">
+                        <div><field name="image" widget="image" /></div>
+                        
                         <field name="model" />
                         <field name="color" />
                         <field name="manufacturer" />
@@ -47,20 +43,89 @@
                         <field name="status" />
                         <field name="owner_id" />
                         <field name="borrower_id" />
+                    </t>
+                </template>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_car_model_form" model="ir.ui.view">
+        <field name="name">car.management.form</field>
+        <field name="model">car.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="model" />
+                        <field name="image" widget="image" />
+                        <field name="color" />
+                        <field name="manufacturer" />
+                        <field name="license" />
+                    </group>
+                    <group>
+                        <field name="YOM" />
+                        <field name="service" />
+                        <field name="mileage" />
+                        <field name="status" placeholder="Select" />
+                        <field name="owner_id" />
+                        <field name="borrower_id" />
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
+    <record id="owner_model_tree" model="ir.ui.view">
+        <field name="name">car.owner.tree</field>
+        <field name="model">car.owner</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="cars_owned" />
+                <field name="email" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="borrower_model_tree" model="ir.ui.view">
+        <field name="name">borrower.details.tree</field>
+        <field name="model">borrower.details</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="cars_rented" />
+                <field name="email" />
+            </tree>
+        </field>
+    </record>
+
     <record id="car_model_action" model="ir.actions.act_window">
         <field name="name">car.management.form.actions</field>
         <field name="res_model">car.management</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_car_management_tree" />
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_car_model_tree" />
     </record>   
 
+    <record id="car_owner_action" model="ir.actions.act_window">
+        <field name="name">owner.model</field>
+        <field name="res_model">car.owner</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="owner_model_tree" />
+    </record>
+
+    <record id="car_borrower_action" model="ir.actions.act_window">
+        <field name="name">borrower.detailsl</field>
+        <field name="res_model">borrower.details</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="borrower_model_tree" />
+    </record>
+
+
+    <!-- Main Menu -->
     <menuitem id="car_management_menu_root" name="Car Management" />
 
-    <menuitem id="car_management_menu" name="Cars" parent="car_management_menu_root" action="car_model_action" />
+    <menuitem id="car_model_menu" name="Cars" parent="car_management_menu_root" action="car_model_action" />
+    <menuitem id="car_owner_menu" name="Owners" parent="car_management_menu_root" action="car_owner_action" />
+    <menuitem id="car_borrower_menu" name="Borrowes" parent="car_management_menu_root" action="car_borrower_action" />
 </odoo>

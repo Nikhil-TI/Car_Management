@@ -3,6 +3,7 @@ from odoo import models, fields
 class car_owners(models.Model):
     _name = "car.owner"
     _description = "All the owners who own the cars that are to be rented"
+    _rec_name = "email" 
 
     #name of the owner
     name = fields.Char(string="Name")

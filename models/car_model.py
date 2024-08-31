@@ -3,9 +3,13 @@ from odoo import models, fields
 class Car(models.Model):
     _name = "car.management"
     _description = "Car Management"
+    
 
     #Car name
     model = fields.Char(string="Car Model", required=True)
+
+    #image of the car
+    image = fields.Image(string="Image")
 
     # Original owner
     owner_id = fields.Many2one('car.owner', string="Owner")
@@ -32,4 +36,4 @@ class Car(models.Model):
     mileage = fields.Float(string="Mileage")
 
     #status
-    status = fields.Char(string="Status")
+    status = fields.Selection([("available", "Available"), ("rented", "Rented")],string="Status", help="Availability of the car", default="available")
