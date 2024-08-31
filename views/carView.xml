@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <!-- CAR VIEW START-->
+
     <!-- car model tree view -->
     <record id="view_car_model_tree" model="ir.ui.view">
         <field name="name">car.management.tree</field>
@@ -31,24 +33,53 @@
             <kanban>
                 <template>
                     <t t-name="kanban-box">
-                        <div><field name="image" widget="image" /></div>
-                        
-                        <field name="model" />
-                        <field name="color" />
-                        <field name="manufacturer" />
-                        <field name="license" />
-                        <field name="YOM" />
-                        <field name="service" />
-                        <field name="mileage" />
-                        <field name="status" />
-                        <field name="owner_id" />
-                        <field name="borrower_id" />
+                        <div style="display: flex; flex-direction: column">
+                            <field name="image" widget="image" />
+                            <div style="display: flex; justify-content: space-around;">
+                                <div>
+                                    <div>
+                                        <field name="model" />
+                                    </div>
+                                    <div>
+                                        <field name="color" />
+                                    </div>
+                                    <div>
+                                        <field name="license" />
+                                    </div>
+                                    <div>
+                                        <field name="manufacturer" />
+                                    </div>
+                                    <div>
+                                        <field name="YOM" />
+                                    </div>
+                                    <div>
+                                        <field name="service" />
+                                    </div>
+                                    <div>
+                                        <field name="mileage" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <field name="status" />
+                                    </div>
+                                    <div>
+                                        <field name="owner_id" />
+                                    </div>
+                                    <div>
+                                        <field name="borrower_id" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </t>
                 </template>
             </kanban>
         </field>
     </record>
 
+
+    <!-- car model form -->
     <record id="view_car_model_form" model="ir.ui.view">
         <field name="name">car.management.form</field>
         <field name="model">car.management</field>
@@ -61,8 +92,6 @@
                         <field name="color" />
                         <field name="manufacturer" />
                         <field name="license" />
-                    </group>
-                    <group>
                         <field name="YOM" />
                         <field name="service" />
                         <field name="mileage" />
@@ -75,6 +104,16 @@
         </field>
     </record>
 
+    <!-- CAR VIEW END-->
+
+
+
+
+
+
+    <!-- OWNER VIEW START-->
+
+    <!-- owner model tree -->
     <record id="owner_model_tree" model="ir.ui.view">
         <field name="name">car.owner.tree</field>
         <field name="model">car.owner</field>
@@ -87,7 +126,31 @@
         </field>
     </record>
 
+    <!-- car owner form -->
+    <record id="car_owner_model_form" model="ir.ui.view">
+        <field name="name">Car Owner Form</field>
+        <field name="model">car.owner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="avatar" widget="avatar" />
+                        <field name="name" />
+                        <field name="email" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
+
+    <!-- OWNER VIEW END-->
+
+
+
+    <!-- BORROWER VIEW START-->
+
+    <!-- boroowe model tree -->
     <record id="borrower_model_tree" model="ir.ui.view">
         <field name="name">borrower.details.tree</field>
         <field name="model">borrower.details</field>
@@ -100,6 +163,30 @@
         </field>
     </record>
 
+    <!-- car borrower form -->
+    <record id="borrower_model_form" model="ir.ui.view">
+        <field name="name">Borrower Form</field>
+        <field name="model">borrower.details</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="avatar" widget="avatar" />
+                        <field name="name" />
+                        <field name="email" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- BORROWER VIEW END-->
+
+
+    <!-- ACTIONS START -->
+
+    <!-- car record actions -->
     <record id="car_model_action" model="ir.actions.act_window">
         <field name="name">car.management.form.actions</field>
         <field name="res_model">car.management</field>
@@ -107,19 +194,23 @@
         <field name="view_id" ref="view_car_model_tree" />
     </record>   
 
+    <!-- car owner action -->
     <record id="car_owner_action" model="ir.actions.act_window">
-        <field name="name">owner.model</field>
+        <field name="name">Owner Model</field>
         <field name="res_model">car.owner</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form</field>
         <field name="view_id" ref="owner_model_tree" />
     </record>
 
+    <!-- car borrower action -->
     <record id="car_borrower_action" model="ir.actions.act_window">
-        <field name="name">borrower.detailsl</field>
+        <field name="name">borrower.details</field>
         <field name="res_model">borrower.details</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form</field>
         <field name="view_id" ref="borrower_model_tree" />
     </record>
+
+    <!-- ACTIONS END -->
 
 
     <!-- Main Menu -->

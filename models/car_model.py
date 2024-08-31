@@ -36,4 +36,4 @@ class Car(models.Model):
     mileage = fields.Float(string="Mileage")
 
     #status
-    status = fields.Selection([("available", "Available"), ("rented", "Rented")],string="Status", help="Availability of the car", default="available")
+    status = fields.Selection([("available", "Available"), ("rented", "Rented")],string="Status", help="Availability of the car")

@@ -11,5 +11,8 @@ class car_owners(models.Model):
     #car's owned
     cars_owned = fields.One2many("car.management","owner_id",string="Car's Owned")
 
+    #profile picture
+    avatar = fields.Image(string="Avatar")
+
     #contact email
     email = fields.Char(string="Email")
