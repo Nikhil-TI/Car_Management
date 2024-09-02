@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- CAR VIEW START-->
+
+  <!-- car model tree view -->
+  <record id="view_car_model_tree" model="ir.ui.view">
+    <field name="name">car.management.tree</field>
+    <field name="model">car.management</field>
+    <field name="arch" type="xml">
+      <tree string="Car Management">
+        <field name="model" />
+        <field name="image" widget="image" />
+        <field name="color" />
+        <field name="manufacturer" />
+        <field name="license" />
+        <field name="YOM" />
+        <field name="service" />
+        <field name="mileage" />
+        <field name="status" />
+        <field name="owner_id" />
+        <field name="owner_id_email" />
+        <field name="borrower_id" />
+        <field name="borrower_id_email" />
+      </tree>
+    </field>
+  </record>
+
+  <!-- car model kanban view -->
+  <record id="view_car_model_kanban_view" model="ir.ui.view">
+    <field name="name">car.model.kanban.view</field>
+    <field name="model">car.management</field>
+    <field name="arch" type="xml">
+      <kanban>
+        <template>
+          <t t-name="kanban-box">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <div
+                style="
+                  width: 250px;
+                  height: 250px; /* Define the height to maintain aspect ratio */
+                  overflow: hidden;
+                  position: relative;
+                "
+              >
+                <img
+                  t-att-src="kanban_image('car.management','image', record.id.raw_value)"
+                  alt="temp image"
+                  style="
+                    width: 100%;
+                    height: auto;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  "
+                />
+              </div>
+              <div style="display: flex; justify-content: space-around; width: 100%;">
+                <div>
+                  <div>
+                    <b>Model: </b>
+                    <field name="model" />
+                  </div>
+                  <div>
+                    <b>Color: </b>
+                    <field name="color" />
+                  </div>
+                  <div>
+                    <b>License Plate: </b>
+                    <field name="license" />
+                  </div>
+                  <div>
+                    <b>Manufacturer: </b>
+                    <field name="manufacturer" />
+                  </div>
+                  <div>
+                    <b>Year of Manufacturing: </b>
+                    <field name="YOM" />
+                  </div>
+                  <div>
+                    <b>Last Date of Service: </b>
+                    <field name="service" />
+                  </div>
+                  <div>
+                    <b>Mileage: </b>
+                    <field name="mileage" />
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <b>Status: </b>
+                    <field name="status" />
+                  </div>
+                  <div>
+                    <b>Owner: </b>
+                    <field name="owner_id" />
+                  </div>
+                  <div>
+                    <b>Email: </b>
+                    <field name="owner_id_email" />
+                  </div>
+                  <div>
+                    <b>Rented To: </b>
+                    <field name="borrower_id" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </t>
+        </template>
+      </kanban>
+    </field>
+  </record>
+
+  <!-- car model form -->
+  <record id="view_car_model_form" model="ir.ui.view">
+    <field name="name">car.management.form</field>
+    <field name="model">car.management</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="model" placeholder="Enter the model of the car"  />
+            <field name="image" widget="image" placeholder="Upload the image of the car" />
+            <field name="color" placeholder="Color of the car" />
+            <field name="manufacturer" placeholder="Manufacturer company of the car" />
+            <field name="license" placeholder="License Plate/ License Number" />
+            <field name="YOM" placeholder="Enter year" />
+            <field name="service" placeholder="Enter the date" />
+            <field name="mileage" placeholder="Enter the mileage" />
+            <field name="status" placeholder="Select" />
+            <field name="owner_id" placeholder="Select Owner" />
+            <field name="owner_id_email" placeholder="Owner's email Id" />
+            <field name="borrower_id" placeholder="Select the borrower" />
+            <field name="borrower_id_email" placeholder="Borrower Email" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+
+  <!-- car record actions -->
+  <record id="car_model_action" model="ir.actions.act_window">
+    <field name="name">car.management.form.actions</field>
+    <field name="res_model">car.management</field>
+    <field name="view_mode">kanban,tree,form</field>
+    <field name="view_id" ref="view_car_model_tree" />
+  </record>
+
+  <!-- CAR VIEW END-->
+</odoo>

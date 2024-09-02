@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <!-- Main Menu -->
+  <menuitem id="car_management_menu_root" name="Car Management" />
+
+  <menuitem
+    id="car_model_menu"
+    name="Cars"
+    parent="car_management_menu_root"
+    action="car_model_action"
+  />
+  <menuitem
+    id="car_owner_menu"
+    name="Owners"
+    parent="car_management_menu_root"
+    action="car_owner_action"
+  />
+  <menuitem
+    id="car_borrower_menu"
+    name="Borrowers"
+    parent="car_management_menu_root"
+    action="car_borrower_action"
+  />
+</odoo>
