@@ -16,11 +16,11 @@
         <field name="YOM" />
         <field name="service" />
         <field name="mileage" />
-        <field name="status" />
+        <field name="status" decoration-success="status == 'available'" decoration-danger="status == 'rented'" widget="badge" />
         <field name="owner_id" />
-        <field name="owner_id_email" />
-        <field name="borrower_id" />
-        <field name="borrower_id_email" />
+        <field name="owner_id_email" widget="email" />
+        <field name="borrower_id"/>
+        <field name="borrower_id_email" widget="email" />
       </tree>
     </field>
   </record>
@@ -96,7 +96,7 @@
                 <div>
                   <div>
                     <b>Status: </b>
-                    <field name="status" />
+                    <field name="status" decoration-success="status == 'available'" decoration-danger="status == 'rented'" widget="badge" />
                   </div>
                   <div>
                     <b>Owner: </b>
@@ -104,7 +104,7 @@
                   </div>
                   <div>
                     <b>Email: </b>
-                    <field name="owner_id_email" />
+                    <field name="owner_id_email" widget="email" />
                   </div>
                   <div>
                     <b>Rented To: </b>
@@ -124,23 +124,28 @@
     <field name="name">car.management.form</field>
     <field name="model">car.management</field>
     <field name="arch" type="xml">
+
       <form>
         <sheet>
-          <group>
-            <field name="model" placeholder="Enter the model of the car"  />
-            <field name="image" widget="image" placeholder="Upload the image of the car" />
-            <field name="color" placeholder="Color of the car" />
-            <field name="manufacturer" placeholder="Manufacturer company of the car" />
-            <field name="license" placeholder="License Plate/ License Number" />
-            <field name="YOM" placeholder="Enter year" />
-            <field name="service" placeholder="Enter the date" />
-            <field name="mileage" placeholder="Enter the mileage" />
-            <field name="status" placeholder="Select" />
-            <field name="owner_id" placeholder="Select Owner" />
-            <field name="owner_id_email" placeholder="Owner's email Id" />
-            <field name="borrower_id" placeholder="Select the borrower" />
-            <field name="borrower_id_email" placeholder="Borrower Email" />
-          </group>
+            <group>
+              <group>
+                  <field name="model" placeholder="Enter the model of the car"  />
+                  <field name="image" widget="image" placeholder="Upload the image of the car" />
+                  <field name="color" placeholder="Color of the car" />
+                  <field name="manufacturer" placeholder="Manufacturer company of the car" />
+                  <field name="license" placeholder="License Plate/ License Number" />
+                  <field name="YOM" placeholder="Enter year" />
+                  <field name="service" placeholder="Enter the date" />
+                  <field name="mileage" placeholder="Enter the mileage" />
+              </group>
+              <group>
+                <field name="status" decoration-success="status == 'available'" decoration-danger="status == 'rented'" widget="badge" />
+                <field name="owner_id" placeholder="Select Owner" />
+                <field name="owner_id_email" placeholder="Owner's email Id" />
+                <field name="borrower_id" placeholder="Select the borrower" />
+                <field name="borrower_id_email" placeholder="Borrower Email" />
+              </group>
+            </group>
         </sheet>
       </form>
     </field>

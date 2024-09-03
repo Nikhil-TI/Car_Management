@@ -1,1 +1,1 @@
-from . import car_model, car_owner, borrowers
+from . import car_model, car_owner, borrowers, car_rental

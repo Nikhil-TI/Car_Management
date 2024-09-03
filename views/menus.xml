@@ -21,4 +21,11 @@
     parent="car_management_menu_root"
     action="car_borrower_action"
   />
+
+  <menuitem
+    id="car_rental_menu"
+    name="Car Rental"
+    parent="car_management_menu_root"
+    action="car_rental_action_id"
+  />
 </odoo>
