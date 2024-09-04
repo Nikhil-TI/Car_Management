@@ -23,13 +23,57 @@
       <form>
         <sheet>
           <group>
+          <group>
             <field name="avatar" widget="avatar" />
             <field name="name" />
-            <field name="cars_rented" />
             <field name="email" />
+          </group>
+          <group>
+            <field name="cars_rented" />
+          </group>
           </group>
         </sheet>
       </form>
+    </field>
+  </record>
+
+
+  <!-- cart borrower kanban view -->
+  <record id="car_borrower_kanban_view" model="ir.ui.view">
+    <field name="name">car.borrower.model.kanban.view</field>
+    <field name="model">borrower.details</field>
+    <field name="arch" type="xml">
+      <kanban>
+        <template>
+            <t t-name="kanban-box">
+              <div style="display: flex; justify-content: space-around; align-items: center;">
+                <div>
+                  <field name="avatar" widget="image" />
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <div style="width: 100%;">
+                    <b>
+                      Name:
+                    </b>
+                    <field name="name" />
+                  </div>
+                  <div style="width: 100%;">
+                    <b>
+                      Car's rented:
+                    </b>
+                    <field name="cars_rented" />
+                  </div>
+                  <div style="width: 100%;">
+                    <b>
+                      Email: 
+                    </b>
+                    <field name="email" />
+                  </div>
+                </div>
+              </div>
+            </t>
+        </template>
+      </kanban>
     </field>
   </record>
 
@@ -37,7 +81,7 @@
   <record id="car_borrower_action" model="ir.actions.act_window">
     <field name="name">borrower.details</field>
     <field name="res_model">borrower.details</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">tree,form,kanban</field>
     <field name="view_id" ref="borrower_model_tree" />
   </record>
 
