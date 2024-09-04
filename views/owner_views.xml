@@ -8,7 +8,6 @@
     <field name="model">car.owner</field>
     <field name="arch" type="xml">
       <tree>
-        <field name="avatar" widget="image" />
         <field name="name" />
         <field name="cars_id" />
         <field name="email" />
@@ -33,6 +32,9 @@
       </form>
     </field>
   </record>
+
+  <!-- car owner kanban view -->
+  <!-- <record id="car_owner_kanban_view" model="ir.ui.view"></record> -->
 
 
   <!-- car owner action -->

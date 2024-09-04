@@ -25,6 +25,7 @@
           <group>
             <field name="avatar" widget="avatar" />
             <field name="name" />
+            <field name="cars_rented" />
             <field name="email" />
           </group>
         </sheet>
@@ -36,7 +37,7 @@
   <record id="car_borrower_action" model="ir.actions.act_window">
     <field name="name">borrower.details</field>
     <field name="res_model">borrower.details</field>
-    <field name="view_mode">tree,form,graph</field>
+    <field name="view_mode">tree,form</field>
     <field name="view_id" ref="borrower_model_tree" />
   </record>
 
