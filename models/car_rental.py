@@ -8,6 +8,8 @@ class car_rental(models.Model):
     #car id
     car_id = fields.Many2one("car.management" ,string="Car", required=True)
 
+    car_color = fields.Char(related="car_id.color")
+
     #borrower id
     borrower_id = fields.Many2one("borrower.details", string="Borrower")
 
@@ -29,4 +31,5 @@ class car_rental(models.Model):
                 raise ValidationError("Start date must be before the end date!")
 
             # overlapping_rentals = self.search([("car_id")])
+            
         

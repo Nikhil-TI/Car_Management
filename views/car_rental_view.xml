@@ -1,4 +1,6 @@
 <odoo>
+
+    <!-- car rental tree view -->
     <record id="car_rental_tree_view" model="ir.ui.view">
         <field name="name">car.rental.tree.view</field>
         <field name="model">car.rental</field>
@@ -12,6 +14,8 @@
         </field>
     </record>
 
+
+    <!-- car rental form view -->
     <record id="car_rental_form_view" model="ir.ui.view">
         <field name="name">car.rental.form.view</field>
         <field name="model">car.rental</field>
@@ -22,10 +26,26 @@
                         <field name="car_id" />
                         <field name="borrower_id" />
                         <field name="rental_start" />
-                        <field name="rental_end" />
+                        <field name="rental_end" />   
+                        <field name="car_color"/>          
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <!-- car rental calender view -->
+    <record id="car_rental_calendar_view" model="ir.ui.view">
+        <field name="name" >car.rental.model.calendar.view</field>
+        <field name="model" >car.rental</field>
+        <field name="arch" type="xml" >
+            <calendar string="Car Rentals" date_start="rental_start" date_stop="rental_end" color="car_color">
+                <field name="car_id" />
+                <field name="borrower_id" />
+                <field name="rental_start" />
+                <field name="rental_end" />
+                <field name="car_color"/>
+            </calendar>
         </field>
     </record>
 
@@ -33,7 +53,7 @@
     <record id="car_rental_action_id" model="ir.actions.act_window">
         <field name="name">Car Rental</field>
         <field name="res_model">car.rental</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar</field>
         <field name="view_id" ref="car_rental_tree_view" />
     </record>
 </odoo>
