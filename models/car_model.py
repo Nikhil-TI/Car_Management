@@ -29,6 +29,11 @@ class Car(models.Model):
         #color
         color = fields.Char(string="Color", required=True)
 
+        #currency import id
+        currency_id= fields.Many2one("res.currency", string="Currency", required=True)
+        #cost of the car per day
+        cost= fields.Monetary(string="Cost for rental per day", currency_field="currency_id")
+
         #made by
         manufacturer = fields.Char(string="Manufacturer", required=True)
 

@@ -17,6 +17,8 @@
         <field name="service" />
         <field name="mileage" />
         <field name="status" decoration-success="status == 'available'" decoration-danger="status == 'rented'" widget="badge" />
+        <field name="currency_id" />
+        <field name="cost" />
         <field name="owner_id" />
         <field name="owner_id_email" widget="email" />
         <field name="rental_id"  />
@@ -117,6 +119,11 @@
                     <b>Rented To: </b>
                     <field name="borrower_id" />
                   </div>
+                  <div>
+                    <b>Cost: </b>
+                    <field name="currency_id" />
+                    <field name="cost" />
+                  </div>
                   <div class="o_kanban_details oe_kanban_global_click o_kanban_record p-1 px-2 text-center" style="background-color: rgb(0,0, 0, 0.7); color: white; width: 50%; border-radius: 10px;">
                     View
                   </div>
@@ -150,6 +157,8 @@
               </group>
               <group>
                 <field name="status" decoration-success="status == 'available'" decoration-danger="status == 'rented'" widget="badge" />
+                <field name="currency_id" />
+                <field name="cost" />
                 <field name="owner_id" placeholder="Select Owner" />
                 <field name="owner_id_email" placeholder="Owner's email Id" />
                 <field name="rental_id"  />
