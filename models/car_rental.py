@@ -31,12 +31,6 @@ class car_rental(models.Model):
     @api.depends("rental_start", "rental_end")
     def _cal_cost_for_rental(self):
         for record in self:
-            if record.rental_start:
-                # print("This is start of rental---------------",record.rental_start)
-                _logger.info(f"This is start of rental---------------{record.rental_start}")
-            if record.rental_end:
-                # print("This is end of rental-----------------",record.rental_end)
-                _logger.info(f"This is start of end---------------{record.rental_end}")
             if record.rental_start and record.rental_end:
                 record.total_cost = (record.rental_end - record.rental_start).days * record.car_id.cost 
                 _logger.info(f"This is the result see this---------------{(record.rental_end - record.rental_start).days * record.car_id.cost}")
