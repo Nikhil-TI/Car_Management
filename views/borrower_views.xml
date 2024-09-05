@@ -9,7 +9,7 @@
     <field name="arch" type="xml">
       <tree>
         <field name="name" />
-        <!-- <field name="cars_rented" /> -->
+        <field name="cars_rented" />
         <field name="email" />
       </tree>
     </field>
@@ -29,7 +29,7 @@
             <field name="email" />
           </group>
           <group>
-            <!-- <field name="cars_rented" /> -->
+            <field name="cars_rented" />
           </group>
           </group>
         </sheet>
@@ -61,7 +61,7 @@
                     <b>
                       Car's rented:
                     </b>
-                    <!-- <field name="cars_rented" /> -->
+                    <field name="cars_rented" />
                   </div>
                   <div style="width: 100%;">
                     <b>
