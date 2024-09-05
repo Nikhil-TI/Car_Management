@@ -18,8 +18,12 @@ class Car(models.Model):
         #owners email
         owner_id_email = fields.Char(string="Owner's Email", related="owner_id.email")
 
+
+
+        rental_id = fields.Many2many("car.rental", "car_management_rental_rel", "car_id", "rental_id", string="Rentals")
+
         # Renter of the car
-        borrower_id = fields.Many2one('borrower.details', string="Borrower")
+        borrower_id = fields.Many2one(string="borrower", related="rental_id.borrower_id")
         #Renters email
         borrower_id_email = fields.Char(string="Borrower's email",related='borrower_id.email')
 
@@ -42,7 +46,8 @@ class Car(models.Model):
         mileage = fields.Float(string="Mileage", required=True)
 
         #status
-        status = fields.Selection([("available", "Available"), ("rented", "Rented")],string="Status", help="Availability of the car", default="available", compute="_getStatusUpdated")
+        # status = fields.Selection([("available", "Available"), ("rented", "Rented")],string="Status", help="Availability of the car", default="available", compute="_getStatusUpdated")
+        status = fields.Selection([("available", "Available"), ("rented", "Rented")],string="Status", help="Availability of the car", default="available")
 
         @api.constrains("mileage", "service", "YOM")
         def _field_constrains(self):
@@ -59,13 +64,13 @@ class Car(models.Model):
                         if record.mileage < 1:
                                 raise ValidationError("Mileage cannot be zero or negative")
 
-        @api.depends("borrower_id")
-        def _getStatusUpdated(self):
-                for record in self:
-                        record.status = "available"
-                        print(record.borrower_id)
-                        if record.borrower_id:
-                                record.status = "rented"
+        # @api.depends("borrower_id")
+        # def _getStatusUpdated(self):
+        #         for record in self:
+        #                 record.status = "available"
+        #                 print(record.borrower_id)
+        #                 if record.borrower_id:
+        #                         record.status = "rented"
                 
 
         # Capitalizing the record in the model        

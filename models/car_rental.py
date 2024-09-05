@@ -6,21 +6,23 @@ class car_rental(models.Model):
     _description = "Car rental records"
 
     #car id
-    car_id = fields.Many2one("car.management" ,string="Car", required=True)
+    car_id = fields.Many2many("car.management", "car_management_rental_rel", "rental_id", "car_id", string="Cars")
 
     car_color = fields.Char(related="car_id.color")
 
     #borrower id
+    # borrower_id = fields.Many2one("borrower.details", string="Borrower")
+
     borrower_id = fields.Many2one("borrower.details", string="Borrower")
 
     # rental starting date
-    rental_start = fields.Date(String="Starting data")
+    rental_start = fields.Date(string="Starting data")
 
     #rental ending date
-    rental_end = fields.Date(String="Ending data")
+    rental_end = fields.Date(string="Ending data")
 
     #cost of rental
-    cost = fields.Float(String="Cost of rental per month")
+    cost = fields.Float(string="Cost of rental per month")
 
 
 

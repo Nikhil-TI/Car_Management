@@ -8,7 +8,9 @@ class borrowers(models.Model):
     name = fields.Char(string="Name")
 
     #car's rented
-    cars_rented = fields.One2many("car.management", "borrower_id",string="Car's rented")
+    # cars_rented = fields.One2many("car.management", "borrower_id",string="Car's rented")
+
+    rental_id = fields.One2many("car.rental", string="rental Data", inverse_name="borrower_id")
 
     #profile picture
     avatar = fields.Image(string="Avatar")

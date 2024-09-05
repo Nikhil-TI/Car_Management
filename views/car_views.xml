@@ -19,6 +19,7 @@
         <field name="status" decoration-success="status == 'available'" decoration-danger="status == 'rented'" widget="badge" />
         <field name="owner_id" />
         <field name="owner_id_email" widget="email" />
+        <field name="rental_id"  />
         <field name="borrower_id"/>
         <field name="borrower_id_email" widget="email" />
       </tree>
@@ -109,6 +110,10 @@
                     <field name="owner_id_email" widget="email" />
                   </div>
                   <div>
+                    <b>Rental: </b>
+                    <field name="rental_id"  />
+                  </div>
+                  <div>
                     <b>Rented To: </b>
                     <field name="borrower_id" />
                   </div>
@@ -147,6 +152,7 @@
                 <field name="status" decoration-success="status == 'available'" decoration-danger="status == 'rented'" widget="badge" />
                 <field name="owner_id" placeholder="Select Owner" />
                 <field name="owner_id_email" placeholder="Owner's email Id" />
+                <field name="rental_id"  />
                 <field name="borrower_id" placeholder="Select the borrower" />
                 <field name="borrower_id_email" placeholder="Borrower Email" />
               </group>
