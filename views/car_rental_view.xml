@@ -10,6 +10,7 @@
                 <field name="borrower_id" />
                 <field name="rental_start" />
                 <field name="rental_end" />
+                <field name="total_cost" />
             </tree>
         </field>
     </record>
@@ -26,8 +27,8 @@
                         <field name="car_id" />
                         <field name="borrower_id" />
                         <field name="rental_start" />
-                        <field name="rental_end" />   
-                        <field name="car_color"/>          
+                        <field name="rental_end" />       
+                        <field name="total_cost" />       
                     </group>
                 </sheet>
             </form>
@@ -39,12 +40,12 @@
         <field name="name" >car.rental.model.calendar.view</field>
         <field name="model" >car.rental</field>
         <field name="arch" type="xml" >
-            <calendar string="Car Rentals" date_start="rental_start" date_stop="rental_end" color="car_color">
+            <calendar string="Car Rentals" date_start="rental_start" date_stop="rental_end">
                 <field name="car_id" />
                 <field name="borrower_id" />
                 <field name="rental_start" />
                 <field name="rental_end" />
-                <field name="car_color"/>
+                <field name="total_cost" />
             </calendar>
         </field>
     </record>
