@@ -60,7 +60,7 @@
                     <b>
                       Car's owned:
                     </b>
-                    <field name="cars_id" />
+                    <field name="cars_id" widget="badge" />
                   </div>
                   <div style="width: 100%;">
                     <b>

@@ -22,7 +22,7 @@ class Car(models.Model):
         rental_id = fields.Many2many("car.rental", "car_management_rental_rel", "car_id", "rental_id", string="Rentals")
 
         # Renter of the car
-        borrower_id = fields.Many2one(string="borrower", related="rental_id.borrower_id")
+        borrower_id = fields.Many2one(string="borrower", related="rental_id.borrower_id", readonly=True)
         #Renters email
         borrower_id_email = fields.Char(string="Borrower's email",related='borrower_id.email')
 

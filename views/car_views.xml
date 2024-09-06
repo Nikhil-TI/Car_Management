@@ -112,10 +112,6 @@
                     <field name="owner_id_email" widget="email" />
                   </div>
                   <div>
-                    <b>Rental: </b>
-                    <field name="rental_id"  />
-                  </div>
-                  <div>
                     <b>Rented To: </b>
                     <field name="borrower_id" />
                   </div>

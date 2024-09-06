@@ -20,7 +20,7 @@ class car_rental(models.Model):
     rental_end = fields.Date(string="Ending data", required=True)
 
     #cost of rental
-    total_cost = fields.Float(string="Cost of rental per month", compute="_cal_cost_for_rental")
+    total_cost = fields.Float(string="Cost of rental per month", compute="_cal_cost_for_rental", store=True)
 
     @api.constrains("car_id", "rental_start", "rental_end")
     def _check_availability_of_car(self):
