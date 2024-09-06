@@ -32,6 +32,10 @@ class car_rental(models.Model):
         for record in self:
             if record.rental_start >= record.rental_end:
                 raise ValidationError("Start date must be before the end date!")
+            if record.car_id:
+                car_id = record.car_id
+                if car_id.borrower_id != record.borrower_id:
+                    raise ValidationError("You cannot rent the chosen car between the provided date. It has already been booked by another person.")
 
     #calculating the total cost for the rental period
     @api.depends("rental_start", "rental_end")

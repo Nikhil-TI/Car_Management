@@ -19,7 +19,7 @@ class Car(models.Model):
         owner_id_email = fields.Char(string="Owner's Email", related="owner_id.email")
 
         #rental record
-        rental_id = fields.Many2many("car.rental", "car_management_rental_rel", "car_id", "rental_id", string="Rentals")
+        rental_id = fields.Many2many("car.rental", "car_management_rental_rel", "car_id", "rental_id", string="Rentals", readonly=True)
 
         # Renter of the car
         borrower_id = fields.Many2one(string="borrower", related="rental_id.borrower_id", readonly=True)
