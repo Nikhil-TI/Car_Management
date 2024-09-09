@@ -10,9 +10,7 @@
       <tree string="Car Management">
         <field name="model" />
         <field name="image" widget="image" />
-        <field name="color" />
         <field name="manufacturer" />
-        <field name="license" />
         <field name="YOM" />
         <field name="service" />
         <field name="mileage" />
@@ -21,9 +19,7 @@
         <field name="cost" />
         <field name="owner_id" />
         <field name="owner_id_email" widget="email" />
-        <field name="rental_id"  />
         <field name="borrower_id"/>
-        <field name="borrower_id_email" widget="email" />
       </tree>
     </field>
   </record>
@@ -44,6 +40,7 @@
                 align-items: center;
                 justify-content: center;
                 background-color: honeydew;
+                border-left: 3px solid rgb(45, 180, 45); 
               "
             >
               <div
@@ -121,7 +118,7 @@
                     <field name="cost" />
                   </div>
                   <button name="view_car_details" type="object">
-                    <div class="px-3 py-1" style="background-color: rgb(0,0, 0, 0.7); color: white; width: 100%; border-radius: 10px;;">
+                    <div class="px-4 py-1" style="background-color: rgb(0,0, 0, 0.7); color: white; width: 100%; border-radius: 10px;;">
                       View
                     </div>
                   </button>
