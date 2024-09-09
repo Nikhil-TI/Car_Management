@@ -89,3 +89,7 @@ class Car(models.Model):
                         if record.license:
                                 record.license = record.license.upper()
 
+
+        def view_car_details(self):
+                #open car form view of the car_id
+                pass

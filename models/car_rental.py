@@ -32,17 +32,37 @@ class car_rental(models.Model):
         for record in self:
             if record.rental_start >= record.rental_end:
                 raise ValidationError("Start date must be before the end date!")
-            if record.car_id:
-                car_id = record.car_id
-                if car_id.borrower_id != record.borrower_id:
-                    raise ValidationError("You cannot rent the chosen car between the provided date. It has already been booked by another person.")
+            
+            
+            #check is the car is not already rented by another person
+            for car in record.car_id:
+                overlapping_rentals = self.env["car.rental"].search([
+                    ("car_id","in",car.ids),
+                    ("id","!=",record.id),
+                    ("rental_start","<=", record.rental_end),
+                    ("rental_end",">=", record.rental_start)
+                ])
+
+                #check if the car is not already rented by the same user
+                if overlapping_rentals.borrower_id == record.borrower_id:
+                    raise ValidationError(f"You have already rented the car between the date '{overlapping_rentals[0].rental_start}' and '{overlapping_rentals[0].rental_end}'")
+
+                if overlapping_rentals:
+                    raise ValidationError(f"The car '{car.model}' is already rented between '{overlapping_rentals[0].rental_start}' and '{overlapping_rentals[0].rental_end}'")
+
 
     #calculating the total cost for the rental period
     @api.depends("rental_start", "rental_end")
     def _cal_cost_for_rental(self):
         for record in self:
             if record.rental_start and record.rental_end:
-                record.total_cost = (record.rental_end - record.rental_start).days * record.car_id.cost 
+                #calculate the cost for all the selected car for a single day
+                totalCost = 0
+                for cars in record.car_id:
+                    totalCost = totalCost + cars.cost
+                
+                #fine the total cost for the particular rental slip
+                record.total_cost = (record.rental_end - record.rental_start).days * totalCost 
             else:
                 record.total_cost = 0
 
