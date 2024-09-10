@@ -91,13 +91,10 @@ class Car(models.Model):
 
 
         def view_car_details(self):
-                
-                # Action to open the form view of the car
                 return {
                 'type': 'ir.actions.act_window',
                 'name': 'Car Details',
                 'view_mode': 'form',
                 'res_model': 'car.management',
-                'res_id': self.id,  # The ID of the record to open
-                'target': 'current',  # Open in the current window
+                'res_id': self.id,
                 }

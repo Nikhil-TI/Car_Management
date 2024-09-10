@@ -12,6 +12,7 @@
         </field>
     </record>
 
+    
     <!-- car service model form view  -->
      <record id="car_service_model_form_inherit" model="ir.ui.view">
         <field name="name">car.management.form.inherit</field>

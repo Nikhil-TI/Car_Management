@@ -10,7 +10,7 @@ class Car_service(models.Model):
     service_type = fields.Selection([
         ("maintenance","Maintenance"),
         ("mot","MOT")
-    ], string="Service type", required=False)
+    ], string="Service type", required=True)
 
     service_date = fields.Date(string="Service Date", required=True)
     next_due_date = fields.Date(string="Next Due Date")

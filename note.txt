@@ -13,3 +13,15 @@ Customer management
 
 Additional features
 -> penalties for late return
+
+
+
+
+
+
+
+/////// inheritance implementation suggestion
+res.partner  -  for owner and borrower  
+
+product.template -  for adding the cars item
+
