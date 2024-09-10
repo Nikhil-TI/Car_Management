@@ -28,4 +28,11 @@
     parent="car_management_menu_root"
     action="car_rental_action_id"
   />
+
+  <menuitem
+    id="car_service_menu"
+    name="Car Service"
+    parent="car_management_menu_root"
+    action="car_serivce_model_action_id"
+  />
 </odoo>

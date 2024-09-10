@@ -1,22 +1,20 @@
-from odoo import fields, models
+from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 from datetime import date
 
 class Car_service(models.Model):
-    _name = "car.service"
+    # _name = "car.service"
     _inherit = "car.management"
-    _description = "Car service"
+    # _description = "Car service"
 
     service_type = fields.Selection([
         ("maintenance","Maintenance"),
         ("mot","MOT")
-    ], string="Service type", required=True)
+    ], string="Service type", required=False)
 
     service_date = fields.Date(string="Service Date", required=True)
     next_due_date = fields.Date(string="Next Due Date")
 
-    
-    car_id = fields.Many2one("car.management",string="Car", required=True)
 
     @api.constrains('service_date', 'next_due_date')
     def _check_dates(self):
