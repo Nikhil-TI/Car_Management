@@ -1,13 +1,11 @@
 {
-    'name': "Car Management System",
-    "version": "1.0",
+    "name": "Vroom Vroom Car Rental Service",
+    "version": "2.0",
+    "author": "Nikhil K.",
     "category": "Management",
-    "summary": "Module for managing cars",
-    "author":"Nikhil Kumar",
-    "depends": ["base"],
+    "summary": "A inherited version of Car Rental Management System",
+    "depends": ["base","sale"],
     "installable": True,
     "application": True,
-    "data": ["views/car_views.xml", "views/borrower_views.xml", "views/owner_views.xml", "views/car_rental_view.xml", "views/car_service_view.xml", "views/menus.xml", "security/ir.model.access.csv"],
-    # "data": ["views/carView.xml", "security/ir.model.access.csv"],
-    # "data": ["data/borrower.details.csv","data/car.owner.csv", "data/car.management.csv", "views/carView.xml","security/ir.model.access.csv"]
+    "data": ["views/car_owner_view.xml","security/ir.model.access.csv"]
 }

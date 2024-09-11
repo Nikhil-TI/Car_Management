@@ -1,5 +1,1 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_carModel","access_carModel","model_car_management","base.group_user","1","1","1","1"
-"access_car_owner","access_car_owner","model_car_owner","base.group_user","1","1","1","1"
-"access_borrowers","access_borrower","model_borrower_details","base.group_user","1","1","1","1"
-"access_rental","access_rental","model_car_rental","base.group_user","1","1","1","1"

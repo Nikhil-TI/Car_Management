@@ -1,18 +1,29 @@
-from odoo import models, fields
+from odoo import models, fields, api
+import uuid
 
-class car_owners(models.Model):
-    _name = "car.owner"
-    _description = "All the owners who own the cars that are to be rented"
+import logging
+_logger = logging.getLogger(__name__)
 
-    #name of the owner
-    name = fields.Char(string="Name")
+class car_owner(models.Model):
+    _inherit = "res.partner"
 
-    #car's owned
-    cars_id = fields.One2many("car.management","owner_id",string="Car's Owned")
+    barcode = fields.Integer(default= lambda self : uuid.uuid4().int % 10000000000)
 
 
-    #profile picture
-    avatar = fields.Image(string="Avatar")
+    # ----------------------------------------------------------------------------------------------------------------------------------------------------------
+    @api.model
+    def create(self, vals):
+        self.ensure_one()
+        res=super(car_owner, self).create(vals)
+        new_uuid = uuid.uuid4()
+        res.barcode= new_uuid.int
+        return res
 
-    #contact email
-    email = fields.Char(string="Email")
+
+    def set_barcode(self):
+        records=self.env['res.partner'].search([('barcode','=','0')])
+        _logger.info(f"Display {records}")
+        for rec in records:
+            rec.barcode=10
+
+        return True
