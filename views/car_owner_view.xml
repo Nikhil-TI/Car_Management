@@ -4,39 +4,40 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            
-            <!-- <xpath expr="//header" position="inside">
-            <button name="_set_barcode_" type="object" string='Set Barcode'></button>
-            </xpath> -->
-            <notebook position="before">
-            <field name="barcode" />
-            <button name="set_barcode" type="object" string="Set Barcode"/>
-            </notebook>
            
+           <xpath expr="//sheet/notebook" position="before">
+           <group>
+                <field name="barcode" help="Click on generate if 0" />
+                <button name="set_barcode" type="object" string="Generate Barcode" />
+           </group>
+           </xpath>
+            <!-- email -> before -->
+           <xpath expr="//field[@name='is_blacklisted']" position="after">
+                 
+                <field name="isOwner" help="Have you registered a car to be rented?" />
+           </xpath>
             
         </field>
     </record>
-    <record id="car_owner_inherit_res_partner_tree_view" model="ir.ui.view">
+
+    <!-- <record id="car_owner_inherit_res_partner_tree_view" model="ir.ui.view">
         <field name="name">Car Owner</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_tree"/>
-        <field name="arch" type="xml">
+        <field name="arch" type="xml"> -->
             
-            <xpath expr="//tree" position="inside">
-            <header>
-            <button name="set_barcode" type="object" string='Set Barcode'></button>
-            </header>
+            <!-- <xpath expr="//tree" position="inside">
+                <header>
+                    <button name="set_barcode" type="object" string='Set Barcode'></button>
+                </header>
             </xpath>
-            <!-- <xpath expr="//header" position="inside">
-            <button name="_set_barcode_" type="object" string="Set Barcode"></button>
-            </xpath> -->
             <xpath expr="//field[@name='email']" postion="after">
             <field name="barcode" />
         
-            </xpath>
+            </xpath> -->
             
-        </field>
-    </record>
+        <!-- </field>
+    </record> -->
 
    
 
