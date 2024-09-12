@@ -1,0 +1,19 @@
+<odoo>
+    <menuitem id="car_management_menu" name="Vroom Vroom - Car Rental" />
+
+    <menuitem
+        id="car_owneres_partner_menu"
+        name="Peoples"
+        parent="car_management_menu"
+        action="account.res_partner_action_customer"
+    />
+
+   <menuitem
+        id="people_inherit_product_product_menu"
+        name="Car Model"
+        parent="car_management_menu"
+        action="car_model_inherit_product_product_action_id"
+    />
+
+    
+</odoo>

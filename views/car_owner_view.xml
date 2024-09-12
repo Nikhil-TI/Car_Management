@@ -1,48 +1,65 @@
 <odoo>
-    <record id="car_owner_inherit_res_partner_form_view" model="ir.ui.view">
-        <field name="name">Car Owner</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
-        <field name="arch" type="xml">
-           
-           <xpath expr="//sheet/notebook" position="before">
-           <group>
-                <field name="barcode" help="Click on generate if 0" />
-                <button name="set_barcode" type="object" string="Generate Barcode" />
-           </group>
-           </xpath>
-            <!-- email -> before -->
-           <xpath expr="//field[@name='is_blacklisted']" position="after">
-                 
-                <field name="isOwner" help="Have you registered a car to be rented?" />
-           </xpath>
-            
-        </field>
-    </record>
+  <record id="people_inherit_res_partner_form_view" model="ir.ui.view">
+    <field name="name">People</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="before">
+        <group>
+          <field name="barcode" help="Click on generate if 0" />
+          <button name="set_barcode" type="object" string="Generate" />
+        </group>
+      </xpath>
 
-    <!-- <record id="car_owner_inherit_res_partner_tree_view" model="ir.ui.view">
-        <field name="name">Car Owner</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_tree"/>
-        <field name="arch" type="xml"> -->
-            
-            <!-- <xpath expr="//tree" position="inside">
-                <header>
-                    <button name="set_barcode" type="object" string='Set Barcode'></button>
-                </header>
-            </xpath>
-            <xpath expr="//field[@name='email']" postion="after">
-            <field name="barcode" />
-        
-            </xpath> -->
-            
-        <!-- </field>
-    </record> -->
+      <!-- email -> before -->
+      <xpath expr="//field[@name='is_blacklisted']" position="after">
+        <field name="isOwner" help="Have you registered a car to be rented?" />
+      </xpath>
 
-   
+      <xpath expr="//notebook" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
 
-    <menuitem id="car_management_menu" name="Vroom Vroom - Car Rental" />
+      <xpath expr="//field[@name='mobile']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
 
-    <menuitem id="res_partner_menu" name="Car Owner" parent="car_management_menu" action="account.res_partner_action_customer" />
+      <xpath expr="//field[@name='category_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
 
+      <xpath expr="//field[@name='function']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='title']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <!-- remove company name  -->
+      <xpath expr="//div[@class='o_row']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='l10n_in_gst_treatment']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//label[@for='vat']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//div[@name='vat_vies_container']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='l10n_in_pan']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='company_type']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+    </field>
+  </record>
 </odoo>

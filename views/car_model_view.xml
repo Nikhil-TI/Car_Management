@@ -1,0 +1,25 @@
+<odoo>
+    <record id="car_model_inherit_product_product_form_view" model="ir.ui.view">
+        <field name="name">car.model.form.view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='name']" position="attributes">
+                <attribute name="string">Car Model</attribute>
+            </xpath>
+
+            <xpath expr="//div[@class='d-flex']/field[@class='text-break']" position="attributes">
+                <attribute name="placeholder">e.g. Range Rover</attribute>
+            </xpath>
+
+            
+        </field>
+    </record>
+
+    <record id="car_model_inherit_product_product_action_id" model="ir.actions.act_window">
+        <field name="name">car.model.action</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">form,tree,kanban</field>
+        <field name="view_id" ref="car_model_inherit_product_product_form_view"></field>
+    </record>
+</odoo>

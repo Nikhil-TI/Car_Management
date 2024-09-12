@@ -3,7 +3,7 @@ import random
 import logging
 _logger = logging.getLogger(__name__)
 
-class car_owner(models.Model):
+class people(models.Model):
     _inherit = "res.partner"
 
     barcode = fields.Integer(default= lambda self : random.randint(100000, 999999), unique=True, required=True, readonly=True)

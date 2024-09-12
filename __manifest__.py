@@ -7,5 +7,5 @@
     "depends": ["base","sale"],
     "installable": True,
     "application": True,
-    "data": ["views/car_owner_view.xml","security/ir.model.access.csv"]
+    "data": ["views/car_owner_view.xml", "views/car_model_view.xml","views/menu.xml","security/ir.model.access.csv"]
 }
