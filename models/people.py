@@ -10,6 +10,8 @@ class people(models.Model):
 
     isOwner = fields.Boolean(string="Are you a owner?", required=True, default=False)
 
+    car_id = fields.One2many("product.product",string="Cars", inverse_name="people_id")
+
     # ----------------------------------------------------------------------------------------------------------------------------------------------------------
     # @api.model
     # def create(self, vals):

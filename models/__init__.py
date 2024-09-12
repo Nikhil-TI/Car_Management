@@ -1,1 +1,1 @@
-from . import people
+from . import people, car_model

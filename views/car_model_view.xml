@@ -12,6 +12,18 @@
                 <attribute name="placeholder">e.g. Range Rover</attribute>
             </xpath>
 
+            <xpath expr="//notebook/page[@name='purchase']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='inventory']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='invoicing']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
             
         </field>
     </record>
@@ -19,7 +31,6 @@
     <record id="car_model_inherit_product_product_action_id" model="ir.actions.act_window">
         <field name="name">car.model.action</field>
         <field name="res_model">product.product</field>
-        <field name="view_mode">form,tree,kanban</field>
-        <field name="view_id" ref="car_model_inherit_product_product_form_view"></field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
 </odoo>
