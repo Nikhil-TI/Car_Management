@@ -8,7 +8,7 @@ class Car(models.Model):
 
     people_id = fields.Many2one("res.partner", string="People's")
 
-    # categ_id = fields.Selection([("all","All"),("suv","SUV"), ("sports","Sports Car"), ("budget","Budget Friendly")], string="Category", default="all")
+    type = fields.Selection([("mini","Mini"),("suv","SUV"), ("sports","Sports Car"), ("budget","Budget Friendly"), ("modified", "Modified")], string="Category")
 
 
     # add theses
