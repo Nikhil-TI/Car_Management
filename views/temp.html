@@ -283,7 +283,6 @@
             options="{'line_breaks': False}"
             widget="text"
             placeholder="e.g. Range Rover"
-            on_change="1"
             field_id="name_0"
           />
           <field
@@ -306,7 +305,12 @@
     </div>
     <div name="options">
       <span class="d-inline-block">
-        <field name="sale_ok" on_change="1" field_id="sale_ok_0" />
+        <field
+          name="sale_ok"
+          invisible="1"
+          on_change="1"
+          field_id="sale_ok_0"
+        />
         <label for="sale_ok" />
       </span>
       <span class="d-inline-block">
@@ -321,8 +325,15 @@
             <field name="active" invisible="1" field_id="active_0" />
             <field
               name="detailed_type"
+              invisible="1"
               on_change="1"
               field_id="detailed_type_0"
+            />
+            <field
+              name="type"
+              placeholder="Select"
+              on_change="1"
+              field_id="type_1"
             />
             <field
               name="invoice_policy"
@@ -417,18 +428,21 @@
                 class="oe_inline"
                 widget="monetary"
                 options="{'currency_field': 'cost_currency_id', 'field_digits': True}"
+                invisible="1"
                 field_id="standard_price_0"
               />
             </div>
             <field
               name="default_code"
+              invisible="1"
               on_change="1"
               field_id="default_code_0"
             />
-            <field name="barcode" field_id="barcode_0" />
+            <field name="barcode" invisible="1" field_id="barcode_0" />
             <field
               name="categ_id"
               string="Product Category"
+              invisible="1"
               on_change="1"
               can_create="True"
               can_write="True"
@@ -437,7 +451,7 @@
             <field
               name="l10n_in_hsn_code"
               widget="l10n_in_hsn_autocomplete"
-              invisible="'IN' not in fiscal_country_codes"
+              invisible="1"
               on_change="1"
               field_id="l10n_in_hsn_code_0"
             />
@@ -460,6 +474,7 @@
             <field
               name="additional_product_tag_ids"
               widget="many2many_tags"
+              invisible="1"
               can_create="True"
               can_write="True"
               field_id="additional_product_tag_ids_0"
@@ -539,7 +554,7 @@
           </group>
         </group>
       </page>
-      <page string="Purchase" name="purchase" invisible="not purchase_ok">
+      <page string="Purchase" name="purchase" invisible="1">
         <group name="purchase">
           <group string="Vendor Bills" name="bill">
             <field
@@ -553,7 +568,7 @@
           /></group>
         </group>
       </page>
-      <page string="Inventory" name="inventory" invisible="type == 'service'">
+      <page string="Inventory" name="inventory" invisible="1">
         <group name="inventory">
           <field
             name="has_available_route_ids"
@@ -700,7 +715,7 @@
           </group>
         </group>
       </page>
-      <page string="Accounting" name="invoicing">
+      <page string="Accounting" name="invoicing" invisible="1">
         <group name="accounting" />
       </page>
     </notebook>

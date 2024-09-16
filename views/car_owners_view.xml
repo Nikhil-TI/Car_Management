@@ -1,0 +1,21 @@
+<odoo>
+    <record id="car_owner_tree_view_id" model="ir.ui.view">
+        <field name="name">car.owner.tree.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="barcode"/>
+                <field name="car_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="car_owner_action_id" model="ir.actions.act_window">
+        <field name="name">car.owner.action</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="car_owner_tree_view_id"></field>
+        <field name="domain">[("isOwner","=",True)]</field>
+    </record>
+</odoo>

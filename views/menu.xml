@@ -2,7 +2,7 @@
     <menuitem id="car_management_menu" name="Vroom Vroom - Car Rental" />
 
     <menuitem
-        id="car_owneres_partner_menu"
+        id="people_inherit_partner_menu"
         name="Peoples"
         parent="car_management_menu"
         action="account.res_partner_action_customer"
@@ -15,5 +15,11 @@
         action="car_model_inherit_product_product_action_id"
     />
 
-    
+    <menuitem
+        id="car_owners_partner_menu"
+        name="Car Owners"
+        parent="car_management_menu"
+        action="car_owner_action_id"
+    />    
+
 </odoo>

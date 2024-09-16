@@ -1,0 +1,18 @@
+<odoo>
+    <record id="borrower_tree_view_id" model="ir.ui.view">
+        <field name="name">borrower.tree.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="barcode" />
+                <field name="cars_id" />
+            </xpath>
+        </field>
+    </record>
+
+<!-- 
+    <record id="">
+        
+    </record> -->
+</odoo>
