@@ -1,1 +1,1 @@
-from . import people, car_model
+from . import people, car_model, set_can_be_purchased

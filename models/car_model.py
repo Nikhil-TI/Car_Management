@@ -2,7 +2,7 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 class Car(models.Model):
     
-    _inherit = "product.product"
+    _inherit = "product.template"
 
     owner_id = fields.Many2one("res.partner", string="Owners")
 
@@ -10,6 +10,7 @@ class Car(models.Model):
 
     car_reference = fields.Char(string="Reference", default="new", readonly=True)
 
+    purchase_ok = fields.Boolean(readonly=True)
 
     # add theses
     # override price ranges like cannot be nagative, min - 10,00
@@ -27,5 +28,20 @@ class Car(models.Model):
     def create(self, vals_list):
         for vals in vals_list:
             if vals.get('number', 'new') == 'new':
-                vals['car_reference'] = self.env['ir.sequence'].next_by_code('product.product')
+                vals['car_reference'] = self.env['ir.sequence'].next_by_code('product.template')
         return super().create(vals_list)
+    
+
+    # def toggle_purchased_value(self):
+    
+
+
+
+    def set_can_be_purchased_dialog_box(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Confirmation',
+            'res_model': 'set.can.be.purchased',
+            'view_mode': 'form',
+            'target': 'new'
+        }
