@@ -7,6 +7,8 @@ class set_can_be_purchased(models.TransientModel):
     _description = "set can be purchased"
 
     def confirm(self):
-        pass
-        # record_ids = self._context('needed_id', [])
-        # _logger(f"-----------------------i am here ---------------------------------------------------------- {record_ids}") 
+        record_id = self._context.get('needed_id', [])
+        cars = self.env['product.template'].browse(record_id)
+        _logger.info(f"-----------------------i am here ---------------------------------------------------------- {cars}")
+        for car in cars:
+            car.toggle_purchased_value()

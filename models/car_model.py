@@ -1,5 +1,8 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+import logging
+_logger = logging.getLogger(__name__)
+
 class Car(models.Model):
     
     _inherit = "product.template"
@@ -32,16 +35,21 @@ class Car(models.Model):
         return super().create(vals_list)
     
 
-    # def toggle_purchased_value(self):
+    def toggle_purchased_value(self):
+        self.purchase_ok = not self.purchase_ok
     
 
 
 
     def set_can_be_purchased_dialog_box(self):
+        _logger.info(f"&&&&&&&&&&&&&&&&&&&&&&------------These are tjt ids---------------{self.ids}")
         return {
             'type': 'ir.actions.act_window',
             'name': 'Confirmation',
             'res_model': 'set.can.be.purchased',
             'view_mode': 'form',
-            'target': 'new'
+            'target': 'new',
+            'context': {
+                'needed_id': self.ids
+            }
         }

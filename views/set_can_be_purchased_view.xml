@@ -4,11 +4,8 @@
         <field name="model">set.can.be.purchased</field>
         <field name="arch" type="xml">
             <form string="Set Can Be Purchased">
-                <group>
-                    <p>Are you sure ?</p>
-                </group>
+                    <h3>Are you sure ?</h3>
                 <footer>
-                    <!-- <button string="Confirm" type="object" name="confirm" class="btn-primary"/> -->
                     <button string="Confirm" type="object" name="confirm" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/> 
                 </footer>
