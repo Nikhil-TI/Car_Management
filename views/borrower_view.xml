@@ -5,14 +5,22 @@
         <field name="inherit_id" ref="base.view_partner_tree"></field>
         <field name="arch" type="xml">
             <xpath expr="//tree" position="inside">
-                <field name="barcode" />
-                <field name="cars_id" />
+                <!-- <field name="barcode" /> -->
+                <!-- why is this comming in the tree view when it is commeted, when i um comment it i get error car_id does not exist -->
+                <!-- <field name="cars_id" /> -->
             </xpath>
         </field>
     </record>
 
-<!-- 
-    <record id="">
-        
-    </record> -->
+
+    <record id="borrower_action_id" model="ir.actions.act_window">
+        <field name="name">borrower.action</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="borrower_tree_view_id"></field>
+        <!-- <field name="context">{"filter_isOwner": False}</field> -->
+        <!-- this is not working properly -->
+        <!-- <field name="context">{"search_default_isOwner": False}</field> -->
+        <field name="context">{"group_by": "country_id"}</field>
+    </record>
 </odoo>

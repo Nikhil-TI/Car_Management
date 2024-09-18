@@ -29,12 +29,37 @@ class people(models.Model):
 
 
 
-
+    def create_values(self):
+        message = "Good morning"
+        self = self.with_context(random_value = message)
+        
+        _logger.info(f"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%---------------------{self._context.get("random_value")}-------------------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    
+    def change_value(self):
+        message = "Bye-Bye"
+        self=self.with_context(random_value = message)
+        _logger.info(f"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%---------------------{self._context.get("random_value")}-------------------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    
+    
+        
 
     #btn to re-generate barcode
     def set_barcode(self):
-        # _logger.info(f"{self} -------------------------------------------- LOGIC REACHED HERE -----------------------------------------------------------------")
+        self = self.with_context(using_button = True)
         self.barcode = random.randint(1000000, 9999999)
+        self.check_barcode_origin()
+    
+    def check_barcode_origin(self):
+        if self.env.context.get("using_button"):
+            _logger.info(f"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!_______________________---------------------------Logic triggered using button-----------------------___________________________!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        else:
+            _logger.info(f"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!_______________________---------------------------Logic triggered without button-----------------------___________________________!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            
+
+            
+    # @api.model
+    # def search(self, args):
+    #     _logger.info(f"-------------------------------------------- LOGIC REACHED HERE -----------------------------------------------------------------")
 
 
     # btn to set the barcode for previous data

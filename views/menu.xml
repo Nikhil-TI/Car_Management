@@ -22,4 +22,11 @@
         action="car_owner_action_id"
     />    
 
+    <menuitem
+        id="borrower_menu"
+        name="Borrowers"
+        parent="car_management_menu"
+        action="borrower_action_id"
+    />    
+
 </odoo>

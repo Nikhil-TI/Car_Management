@@ -13,6 +13,7 @@ class Car(models.Model):
 
     car_reference = fields.Char(string="Reference", default="new", readonly=True)
 
+    # using context to set the default value of th e field
     purchase_ok = fields.Boolean(readonly=True)
 
     # add theses
@@ -50,6 +51,6 @@ class Car(models.Model):
             'view_mode': 'form',
             'target': 'new',
             'context': {
-                'needed_id': self.ids
+                'needed_id': self.id
             }
         }

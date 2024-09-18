@@ -9,6 +9,6 @@ class set_can_be_purchased(models.TransientModel):
     def confirm(self):
         record_id = self._context.get('needed_id', [])
         cars = self.env['product.template'].browse(record_id)
-        _logger.info(f"-----------------------i am here ---------------------------------------------------------- {cars}")
+        _logger.info(f"-----------------------i am here ---------------------------------------------------------- {type(cars)}")
         for car in cars:
             car.toggle_purchased_value()
