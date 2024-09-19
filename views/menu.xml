@@ -27,6 +27,19 @@
         name="Borrowers"
         parent="car_management_menu"
         action="borrower_action_id"
-    />    
+    />
+
+    <menuitem
+        id="settings_menu"
+        name="Settings"
+        parent="car_management_menu"
+    /> 
+
+    <menuitem
+        id="barcode_setting_menu"
+        name="Barcode Setting"
+        parent="settings_menu"
+        action="settings_action_id"
+    /> 
 
 </odoo>
