@@ -9,6 +9,8 @@
                 <setting id="barcode_generation_setting_id">
                     <label for="enable_barcode" class="mx-2">Enable barcode generation</label>
                     <field name="enable_barcode" />
+                    <label for="enable_creation" class="mx-2">Enable Creation</label>
+                    <field name="enable_creation" />
                 </setting>
             </xpath>
         </field>

@@ -30,6 +30,9 @@ class Car(models.Model):
     
     @api.model_create_multi
     def create(self, vals_list):
+        creation_allowed = self.env['ir.config_parameter'].sudo().get_param('car_model.enable_creation')
+        if not creation_allowed:
+            raise ValidationError("You cannot create a new record!")
         for vals in vals_list:
             if vals.get('number', 'new') == 'new':
                 vals['car_reference'] = self.env['ir.sequence'].next_by_code('product.template')
