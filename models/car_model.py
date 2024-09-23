@@ -20,12 +20,12 @@ class Car(models.Model):
     # override price ranges like cannot be nagative, min - 10,00
     # add sequences like s0001, s002, s003
     
-    @api.constrains("lst_price")
+    @api.constrains("list_price")
     def validate_price(self):
         for record in self:
-            if record.lst_price < 0:
+            if record.list_price < 0:
                 raise ValidationError("Price cannot be negative!")
-            if record.lst_price < 1000:
+            if record.list_price < 1000:
                 raise ValidationError("Min price for rental is 1000!")
     
     @api.model_create_multi
@@ -34,7 +34,8 @@ class Car(models.Model):
         if not creation_allowed:
             raise ValidationError("You cannot create a new record!")
         for vals in vals_list:
-            if vals.get('number', 'new') == 'new':
+            if vals.get('car_reference', 'new') == 'new':
+                _logger.info(f"*******************%%%%%%%%%%%%%%*********************  {self.env['ir.sequence'].next_by_code('product.template')}  **********%%%%%%%%%%%%%%%%%%&&&&&&&&&&&&&")
                 vals['car_reference'] = self.env['ir.sequence'].next_by_code('product.template')
         return super().create(vals_list)
     
@@ -46,7 +47,6 @@ class Car(models.Model):
 
 
     def set_can_be_purchased_dialog_box(self):
-        _logger.info(f"&&&&&&&&&&&&&&&&&&&&&&------------These are tjt ids---------------{self.ids}")
         return {
             'type': 'ir.actions.act_window',
             'name': 'Confirmation',

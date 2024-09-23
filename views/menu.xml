@@ -36,8 +36,8 @@
     /> 
 
     <menuitem
-        id="barcode_setting_menu"
-        name="Barcode Setting"
+        id="my_setting_menu"
+        name="My Settings"
         parent="settings_menu"
         action="settings_action_id"
     /> 

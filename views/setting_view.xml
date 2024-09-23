@@ -4,8 +4,8 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="base_setup.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//div/block" position="after">
-                <h3>My settings</h3>
+            <xpath expr="//div/block" position="inside">
+                <h2>My settings</h2>
                 <setting id="barcode_generation_setting_id">
                     <label for="enable_barcode" class="mx-2">Enable barcode generation</label>
                     <field name="enable_barcode" />
@@ -20,6 +20,6 @@
         <field name="name">Settings</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
-        <field name="target">new</field>
+        <field name="target">current</field>
     </record>
 </odoo>

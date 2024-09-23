@@ -2,7 +2,7 @@
     <data noupdate="1">
         <record id="ir_sequence_product_product" model="ir.sequence">
             <field name="name">Serial Number</field>
-            <field name="code">product.product</field>
+            <field name="code">product.template</field>
             <field name="prefix">C</field>
             <field name="padding">5</field>
             <field name="company_id" eval="False" />
