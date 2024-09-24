@@ -1,14 +1,26 @@
 <odoo>
     <template id="CRM_template_id">
         <t t-foreach="docs" t-as="property">
-            <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
                 <t t-call="web.external_layout">
                     <div class="page" style="padding: 20px; background-color: #f8f9fa;">
-                        <div style="border-bottom: 3px solid #007bff; padding-bottom: 15px; margin-bottom: 20px;">
-                            <h1 style="font-size: 26px; color: #007bff;">
+                        <div style="border-bottom: 3px solid #49700b; padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between;">
+                            <h1 style="font-size: 26px; color: #49700b;">
                                 <strong>Car Model: </strong>
                                 <span t-field="property.name" />
                             </h1>
+                            <div style="text-align: center;">
+                                <t t-if="property.barcode">
+                                    <img t-att-src="'/report/barcode/QR/%s' % property.barcode" alt="Barcode is Here" style="width: 90px; height: 30px;" />
+                                    <div>
+                                        <strong>Barcode:</strong>
+                                        <span t-field="property.barcode" />
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
                             <p>
                                 <strong>Internal Reference:</strong>
                                 <span t-field="property.car_reference" />
@@ -19,29 +31,15 @@
                                     <span t-field="property.owner_id.name" />
                                 </p>
                             </t>
-                        </div>
-
-                        <!-- Category & Variants Section -->
-                        <div style="background-color: #e9ecef; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
-                            <h2 style="font-size: 20px; color: #007bff; border-bottom: 1px solid #007bff;">Attributes and Variants</h2>
                             <p>
                                 <strong>Category:</strong>
                                 <span t-field="property.car_type" />
-                            </p>
-                            <p>
-                                <strong>Sales Price:</strong>
-                                <span t-field="property.list_price" />
-                                <span>(Incl. Taxes)</span>
-                            </p>
-                            <p>
-                                <strong>Barcode:</strong>
-                                <span t-field="property.barcode" />
                             </p>
                         </div>
 
                         <!-- Sales Information Section with Table -->
                         <div style="background-color: #e9ecef; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
-                            <h2 style="font-size: 20px; color: #007bff; border-bottom: 1px solid #007bff;">Sales Information</h2>
+                            <h2 style="font-size: 20px; color: #49700b; border-bottom: 1px solid #49700b;">Sales Information</h2>
                             <p>
                                 <strong>Invoicing Policy:</strong>
                                 <span t-if="property.invoice_policy == 'order'">Ordered quantities</span>
@@ -49,19 +47,24 @@
                             </p>
                             <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
                                 <thead>
-                                    <tr style="background-color: #007bff; color: white;">
+                                    <tr style="background-color: #49700b; color: white;">
                                         <th style="padding: 5px; border: 1px solid #ddd;">Tax Name</th>
                                         <th style="padding: 5px; border: 1px solid #ddd;">Tax Percentage</th>
+                                        <th style="padding: 5px; border: 1px solid #ddd;">Sales Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <t t-foreach="property.taxes_id" t-as="tax">
                                         <tr>
                                             <td style="padding: 5px; border: 1px solid #ddd;">
-                                                <span t-esc="tax.name"/>
+                                                <span t-out="tax.name"/>
                                             </td>
                                             <td style="padding: 5px; border: 1px solid #ddd;">
-                                                <span t-esc="tax.amount"/>%
+                                                <span t-out="tax.amount"/>%
+                                            </td>
+                                            <td style="padding: 5px; border: 1px solid #ddd;">
+                                                <span t-field="property.list_price" />
+                                                <span>(Incl. Taxes)</span>
                                             </td>
                                         </tr>
                                     </t>
@@ -69,30 +72,25 @@
                             </table>
                         </div>
 
-                        <!-- Purchase Information Section -->
+                        <!-- Combined Product Details and Purchase Information Section -->
                         <div style="background-color: #e9ecef; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
-                            <h2 style="font-size: 20px; color: #007bff; border-bottom: 1px solid #007bff;">Purchase Information</h2>
-                            <p>
-                                <strong>Purchasable:</strong>
-                                <span t-if="property.purchase_ok">Yes</span>
-                                <span t-if="not property.purchase_ok">No</span>
-                            </p>
-                        </div>
-
-                        <!-- Product Template Tags Section -->
-                        <div style="background-color: #e9ecef; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
-                            <h2 style="font-size: 20px; color: #007bff; border-bottom: 1px solid #007bff;">Product Details</h2>
+                            <h2 style="font-size: 20px; color: #49700b; border-bottom: 1px solid #49700b;">Product Details</h2>
                             <p>
                                 <strong>Product Template Tags:</strong>
                                 <span t-foreach="property.product_tag_ids" t-as="tag">
-                                    <span style="background-color: #d1ecf1; padding: 2px 5px; margin-right: 5px; border-radius: 3px; color: #0c5460;">
-                                        <t t-esc="tag.name" />
+                                    <span style="background-color: gray; padding: 1px 8px; margin-right: 5px; border-radius: 10px; color: white;">
+                                        <t t-out="tag.name" />
                                     </span>
                                 </span>
                             </p>
                             <p>
                                 <strong>Company:</strong>
                                 <span t-field="property.company_id.name" />
+                            </p>
+                            <p>
+                                <strong>Purchasable:</strong>
+                                <span t-if="property.purchase_ok">Yes</span>
+                                <span t-if="not property.purchase_ok">No</span>
                             </p>
                         </div>
                     </div>
