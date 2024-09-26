@@ -14,6 +14,8 @@ class people(models.Model):
 
     car_id = fields.One2many("product.template",string="Cars", inverse_name="owner_id")
 
+    vat = fields.Char(required=False)
+
     # ----------------------------------------------------------------------------------------------------------------------------------------------------------
     # @api.model
     # def create(self, vals):

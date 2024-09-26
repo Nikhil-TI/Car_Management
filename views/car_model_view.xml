@@ -66,6 +66,12 @@
             <xpath expr="//label[@for='purchase_ok']" position="after">
                 <button name="set_can_be_purchased_dialog_box" type="object">Toggle Button</button>
             </xpath>
+
+            <xpath expr="//field[@name='owner_id']" position="after">
+                <field name="location" />
+            </xpath>
+
+            
             
 
 

@@ -16,9 +16,22 @@ class Car(models.Model):
     # using context to set the default value of th e field
     purchase_ok = fields.Boolean(readonly=True)
 
+    barcode = fields.Char(compute="copy_barcode", readonly=True)
+
+    location = fields.Char(string="Current Location")
+
+
     # add theses
     # override price ranges like cannot be nagative, min - 10,00
     # add sequences like s0001, s002, s003
+
+    @api.depends("car_reference")
+    def copy_barcode(self):
+        for record in self:
+            if record.car_reference:
+                record.barcode = record.car_reference
+            else:
+                record.barcode = "No Barcode"
     
     @api.constrains("list_price")
     def validate_price(self):
