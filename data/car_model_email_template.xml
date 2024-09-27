@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="car_model_email_template_id" model="mail.template">
+            <field name="name">Email to Car Owner</field>
+            <field name="model_id" ref="Vroom_Vroom.model_product_template"></field>
+            <field name="subject">ALERT! Car Damaged!</field>
+            <field name="email_from">admin@gmail.com</field>
+            <field name="partner_to">{{object.owner_id.email}}</field>
+            <field name="description">We are sorry to inform you that you car has been damaged.......</field>
+            <field name="body_html" type="html">
+                <div>
+                    <p>Dear, {{object.owner_id.name}}</p>
+                    We are sorry to inform you that your car with the model name {{object.name}} has been severely damaged in an accident.
+                    <p>
+                        we are you assure you that proper compensation will be provided to you for your damaged.
+                    </p>
+                    <p>
+                        Car details has been attached in the report below.
+                    </p>
+                </div>
+                <field name="report_template" ref="Vroom_Vroom.professional_CRM_template_id" />
+                <field name="report_name">Car damage report</field>
+            </field>
+        </record>
+    </data>
+</odoo>

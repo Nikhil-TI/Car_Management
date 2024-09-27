@@ -1,0 +1,7 @@
+<odoo>
+    <template id="custom_report_salesorder_report_id" inherit_id="sales.report_salesorder_document">
+        <xpath expr="//h2" position="attributes">
+            <attribute name="style" add="background-color: red" seperator=";"></attribute>
+        </xpath>
+    </template>
+</odoo>

@@ -71,7 +71,13 @@
                 <field name="location" />
             </xpath>
 
-            
+            <xpath expr="//button[@name='set_can_be_purchased_dialog_box']" position="after">
+                <button string="Send email" name="send_email" type="object" />
+            </xpath>
+
+            <xpath expr="//button[@name='send_email']" position="after">
+                <button string="Send email python" name="send_email_python" type="object" />
+            </xpath>
             
 
 

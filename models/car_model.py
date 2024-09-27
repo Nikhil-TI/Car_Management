@@ -55,7 +55,24 @@ class Car(models.Model):
 
     def toggle_purchased_value(self):
         self.purchase_ok = not self.purchase_ok
+
     
+    # send email button
+    def send_email(self):
+        _logger.info("++++++++++++++++++++++++++++++++++++++++==SENDING EMAIL++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        template = self.env.ref("Vroom_Vroom.car_model_email_template_id")
+        template.send_mail(self.id, force_send=True)
+
+    def send_email_python(self):
+        mail_val = {
+            'subject': 'Happy Birthday',
+            'body_html': f'<p>Happy birthday to you {self.owner_id.name}</p>',
+            'email_to': self.owner_id.email,
+            'email_from': 'admin@gmail.com',
+        }
+
+        mail_id = self.env['mail.mail'].create(mail_val)
+        mail_id.send()
 
 
 
