@@ -2,183 +2,153 @@
     <template id="professional_CRM_template_id">
         <t t-foreach="docs" t-as="property">
             <t t-call="web.html_container">
-                <t t-call="web.external_layout">
-                    <div class="page" style="padding: 20px; position: relative;">
-                        <!-- <div>
-                            <h1 style="font-weight: bold; font-family:Verdana, Geneva, Tahoma, sans-serif;">
-                                <span style="color: #bfd99e;">APKI</span>KAR
-                            </h1>
-                        </div> -->
-                        <div style="position: absolute; width: 100%; height: 100%; background-size: cover; z-index: -1; opacity: 0.2; background-repeat: no-repeat;">
-                            <img src="https://i.imghippo.com/files/KVyf31727272992.png" style="height: 500px; width: auto; position: relative; top: 10%; left: 10%;" alt=""/>
-                        </div>
-                        <div style="border-bottom: 3px solid #49700b; padding-bottom: 15px; margin-bottom: 20px;">
-                            <t t-if="property.owner_id">
-                                    <strong style="color: #49700b;">Owner</strong><br/>
-                                    <span style="color: black; font-size: 40px;" t-field="property.owner_id.name" />
-                            </t>
-                        </div>
-
-                        <div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <p>
-                                    <strong>Location: </strong><br/>
-                                    <t t-foreach="property.location.split(',')" t-as="line">
-                                        <span style="margin-left: 10px;" t-esc="line.strip()" />
-                                        <br/>
-                                    </t>
-                                </p>
-                                <p>
-                                    <strong>Product Template Tags:</strong>
-                                    <span t-foreach="property.product_tag_ids" t-as="tag">
-                                        <span style="background-color: gray; padding: 1px 8px; margin-right: 5px; border-radius: 10px; color: white;">
-                                            <span t-out="tag.name" />
-                                        </span>
-                                    </span>
-                                </p>
-                                
-                            </div>
-                            <div style="display: flex; justify-content: flex-end;">
-                                <div style="display: flex; justify-content: space-around; border: 2px solid #8cc63f; border-radius: 30px 0px; overflow: hidden; width: 70%;">
-                                    <div style="flex: 1; background-color: #8cc63f; color: white; padding: 10px;">
-                                        <p>
-                                            <strong style="color: white; font-size: large;">Date: </strong><br/>
-                                            <span t-esc="time.strftime('%Y-%m-%d %H:%M:%S')"/>
-                                        </p>
-                                    </div>
-                                    <div style="flex: 1; padding: 10px;">
-                                        <p>
-                                            <strong>Category:</strong>
-                                            <span t-field="property.car_type" />
-                                        </p>
-                                        
-                                        <p>
-                                            <strong>Purchasable:</strong>
-                                            <span t-if="property.purchase_ok">
-                                                <img style="display: inline; margin-left: 5px; width: 40px; height: auto;" src="https://i.imghippo.com/files/cAZ6c1727273572.png" alt=""/>
-                                            </span>
-                                            <span t-if="not property.purchase_ok">
-                                                <img style="display: inline; width: 40px; margin-left: 5px; height: auto;"  src="https://i.imghippo.com/files/sEbfD1727273626.png" alt=""/>
-                                            </span>
-                                        </p>
-                                    </div>
-                                    <div style="flex: 1;  padding: 10px;">
-                                        <t t-if="property.barcode">
-                                            <img t-att-src="'/report/barcode/QR/%s' % property.barcode" alt="Barcode is Here" style="width: 90px; height: 30px;" />
-                                            <div>
-                                                <strong>Barcode:</strong>
-                                                <span t-field="property.barcode" />
-                                            </div>
-                                        </t>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- <div style="margin-bottom: 20px;">
-                            <p>
-                                <strong>Internal Reference:</strong>
-                                <span t-field="property.car_reference" />
-                            </p>
-                            
-                            <p>
-                                <strong>Category:</strong>
-                                <span t-field="property.car_type" />
-                            </p>
-                            <p>
-                                <strong>Product Template Tags:</strong>
-                                <span t-foreach="property.product_tag_ids" t-as="tag">
-                                    <span style="background-color: gray; padding: 1px 8px; margin-right: 5px; border-radius: 10px; color: white;">
-                                        <span t-out="tag.name" />
-                                    </span>
-                                </span>
-                            </p>
-                            <p>
-                                <strong>Purchasable:</strong>
-                                <span t-if="property.purchase_ok">Yes</span>
-                                <span t-if="not property.purchase_ok">No</span>
-                            </p>
-                        </div> -->
-
-                        <div style="padding: 10px; margin-bottom: 20px;">
-                            <!-- <h2 style="font-size: 20px; color: #49700b; border-bottom: 1px solid #49700b;">Sales Information</h2>
-                            <p>
-                                <strong>Invoicing Policy:</strong>
-                                <span t-if="property.invoice_policy == 'order'">Ordered quantities</span>
-                                <span t-if="property.invoice_policy == 'delivery'">Delivered quantities</span>
-                            </p> -->
-                            <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 30px 0px; border-collapse: separate; overflow: hidden;">
-                                <thead>
-                                    <tr style="background-color: #8cc63f; color: white; text-align: center;">
-                                        <th style="padding: 5px; color: white;">#</th>
-                                        <th style="padding: 5px; color: white;"><b>Car Model</b></th>
-                                        <th style="padding: 5px; color: white;">Image</th>
-                                        <th style="padding: 5px; color: white;">Company</th>
-                                        <th style="padding: 5px; color: white;">Tax Name</th>
-                                        <th style="padding: 5px; color: white;">Sales Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr style="background-color: #fff0; text-align: center;">
-                                        <td style="background-color: #ecedee;">
-                                            <span>1</span>
-                                        </td>
-                                        <td>
-                                            <span t-field="property.name" />
-                                        </td>
-                                        <td>
-                                            <img t-att-src="image_data_uri(property.image_1920)" style="width: 100px; height: auto"/>
-                                        </td>
-                                        <td  style="background-color: #ecedee;">
-                                            <span t-field="property.company_id" />
-                                        </td>
-                                        <td>
-                                            <t t-foreach="property.taxes_id" t-as="tax">
-                                                <span t-out="tax.name" />
-                                            </t>
-                                        </td>
-                                        <td  style="background-color: #ecedee;">
-                                            <span t-field="property.list_price" />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                            <div>
-                                <span style="color: #8cc63f; font-weight: 500;">Payment Terms</span><br/>
-                                Payment terms: End of Following Month
-                            </div>
-                            <div style="text-align: right; display: flex; width: 40%; flex-direction: column;">
-                                <b>Total Without Taxes <span  style="padding: 10px 25px;" t-field="property.list_price"></span></b>
-                                <t t-set="all_taxes" t-value="0" />
-                                <b>
-                                    Taxes
-                                    
-                                    <t t-foreach="property.taxes_id" t-as="tax">
-                                        <t t-set="all_taxes" t-value="all_taxes + tax.amount" />
-                                    </t>
-                                    <span style="padding: 10px 25px;" t-esc="property.list_price*all_taxes/100">
-                                    
-
-                                </span></b>
-                                <t t-set="final_price" t-value="property.list_price + property.list_price*all_taxes/100"/>
-                                <b style="background-color: #8cc63f; color: white; border-radius: 30px 0px;">Total  <span  style="padding: 10px 25px;" t-esc="final_price"></span></b>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 100px;">
-                            <b>Terms and conditions</b>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur repellat veniam veritatis facere laudantium ad soluta id reprehenderit nisi obcaecati corporis, iure eos temporibus saepe ipsa reiciendis, vero aliquam illo! Velit delectus pariatur tenetur!
-                            </p>
-                        </div>
-                        <div style="margin-top: 20px; text-align: center; font-size: 16px; color: #4c4c4c;">
-                            <strong>Happy and Safe Ride</strong>
-                        </div>
-                    </div>
-                </t>
+                <t t-call="Vroom_Vroom.my_custom_header_id" />
+                <div class="page" style="padding: 20px; position: relative;">
+                    <t t-call="Vroom_Vroom.pdf_content_whole_id" />
+                </div>
             </t>
         </t>
+    </template>
+
+    <template id="pdf_content_whole_id">
+        <div style="position: absolute; width: 100%; height: 100%; background-size: cover; z-index: -1; opacity: 0.2; background-repeat: no-repeat;">
+            <img src="https://i.imghippo.com/files/KVyf31727272992.png" style="height: 500px; width: auto; position: relative; top: 10%; left: 10%;" alt=""/>
+        </div>
+        <div style="border-bottom: 3px solid #49700b; padding-bottom: 15px; margin-bottom: 20px;">
+            <t t-if="property.owner_id">
+                    <strong style="color: #49700b;">Owner</strong><br/>
+                    <span style="color: black; font-size: 40px;" t-field="property.owner_id.name" />
+            </t>
+        </div>
+
+        <div>
+            <div style="display: flex; justify-content: space-between;">
+                <p>
+                    <strong>Location: </strong><br/>
+                    <t t-foreach="property.location.split(',')" t-as="line">
+                        <span style="margin-left: 10px;" t-out="line.strip()" />
+                        <br/>
+                    </t>
+                </p>
+                <p>
+                    <strong>Product Template Tags:</strong>
+                    <span t-foreach="property.product_tag_ids" t-as="tag">
+                        <span style="background-color: #00b51d ; padding: 1px 8px; margin-right: 5px; border-radius: 10px; color: white;">
+                            <span t-out="tag.name" />
+                        </span>
+                    </span>
+                </p>
+                
+            </div>
+            <div style="display: flex; justify-content: flex-end;">
+                <div style="display: flex; justify-content: space-around; border: 2px solid #8cc63f; border-radius: 30px 0px; overflow: hidden; width: 70%;">
+                    <div style="flex: 1; background-color: #8cc63f; color: white; padding: 10px;">
+                        <p>
+                            <strong style="color: white; font-size: large;">Date: </strong><br/>
+                            <span t-out="time.strftime('%Y-%m-%d %H:%M:%S')"/>
+                        </p>
+                    </div>
+                    <div style="flex: 1; padding: 10px;">
+                        <p>
+                            <strong>Category:</strong>
+                            <span t-field="property.car_type" />
+                        </p>
+                        
+                        <p>
+                            <strong>Purchasable:</strong>
+                            <span t-if="property.purchase_ok">
+                                <img style="display: inline; margin-left: 5px; width: 40px; height: auto;" src="https://i.imghippo.com/files/cAZ6c1727273572.png" alt=""/>
+                            </span>
+                            <span t-if="not property.purchase_ok">
+                                <img style="display: inline; width: 40px; margin-left: 5px; height: auto;"  src="https://i.imghippo.com/files/sEbfD1727273626.png" alt=""/>
+                            </span>
+                        </p>
+                    </div>
+                    <div style="flex: 1;  padding: 10px;">
+                        <t t-if="property.barcode">
+                            <img t-att-src="'/report/barcode/QR/%s' % property.barcode" alt="Barcode is Here" style="width: 90px; height: 30px;" />
+                            <div>
+                                <strong>Barcode:</strong>
+                                <span t-field="property.barcode" />
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <t t-call="Vroom_Vroom.table_content_id" />
+        
+        
+        <t t-call="Vroom_Vroom.payment_content_id" />
+        
+        <t t-call="Vroom_Vroom.my_custom_footer" />
+
+    </template>
+
+    <template id="table_content_id">
+        <div style="padding: 10px; margin-bottom: 20px;">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 30px 0px; border-collapse: separate; overflow: hidden;">
+                <thead>
+                    <tr style="background-color: #8cc63f; color: white; text-align: center;">
+                        <th style="padding: 5px; color: white;">#</th>
+                        <th style="padding: 5px; color: white;"><b>Car Model</b></th>
+                        <th style="padding: 5px; color: white;">Image</th>
+                        <th style="padding: 5px; color: white;">Company</th>
+                        <th style="padding: 5px; color: white;">Tax Name</th>
+                        <th style="padding: 5px; color: white;">Sales Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #fff0; text-align: center;">
+                        <td style="background-color: #ecedee;">
+                            <span>1</span>
+                        </td>
+                        <td>
+                            <span t-field="property.name" />
+                        </td>
+                        <td>
+                            <img t-att-src="image_data_uri(property.image_1920)" style="width: 100px; height: auto"/>
+                        </td>
+                        <td  style="background-color: #ecedee;">
+                            <span t-field="property.company_id" />
+                        </td>
+                        <td>
+                            <t t-foreach="property.taxes_id" t-as="tax">
+                                <span t-out="tax.name" />
+                            </t>
+                        </td>
+                        <td  style="background-color: #ecedee;">
+                            <span t-field="property.list_price" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+    <template id="payment_content_id">
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                <span style="color: #8cc63f; font-weight: 500;">Payment Terms</span><br/>
+                Payment terms: End of Following Month
+            </div>
+            <div style="text-align: right; display: flex; width: 40%; flex-direction: column;">
+                <b>Total Without Taxes <span  style="padding: 10px 25px;" t-field="property.list_price"></span></b>
+                <t t-set="all_taxes" t-value="0" />
+                <b>
+                    Taxes
+                    
+                    <t t-foreach="property.taxes_id" t-as="tax">
+                        <t t-set="all_taxes" t-value="all_taxes + tax.amount" />
+                    </t>
+                    <span style="padding: 10px 25px;" t-out="property.list_price*all_taxes/100">
+                    
+
+                </span></b>
+                <t t-set="final_price" t-value="property.list_price + property.list_price*all_taxes/100"/>
+                <b style="background-color: #8cc63f; color: white; border-radius: 30px 0px;">Total  <span  style="padding: 10px 25px;" t-out="final_price"></span></b>
+            </div>
+        </div>
     </template>
 </odoo>
